@@ -21,10 +21,10 @@
 }
 
 .pn-ProductNav_Contents {
-  background-color: #bfc356;
+  background-color: #f7cac9;
 }
 .pn-ProductNav_Link {
-  background-color: #bfc356;
+  background-color: #f7cac9;
   color: #888;
   font-size: 2.2em;
   min-width: 400px;
@@ -48,13 +48,13 @@ a.pn-ProductNav_Link {
   padding-left: 10vw;
 }
 a.pn-ProductNav_Link:hover {
-  background: #095aa1;
+  background: #034f84;
   text-align: center;
   color: white;
   margin: 0;
 }
 nav.pn-ProductNav {
-  background-color: #bfc356;
+  background-color: #f7cac9;
 }
 .pn-ProductNav_Link + .pn-ProductNav_Link {
 }
@@ -62,9 +62,12 @@ nav.pn-ProductNav {
   color: #111;
 }
 
+d-block {
+  height: 400px;
+}
 @media (max-width: 650px) {
   nav.pn-ProductNav {
-    background-color: #bfc356;
+    background-color: #f7cac9;
   }
   .pn-ProductNav_Link {
     min-width: 250px;

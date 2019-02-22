@@ -12,7 +12,7 @@
 
 <?php include("header.html");?>
 <?php include("content1.html");?>
-<?php include("./new/content2.html");?>
+<?php include("./content2.html");?>
 
 <?php include("footer.html");?>
 

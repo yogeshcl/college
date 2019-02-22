@@ -1,7 +1,10 @@
 #uppernav {
   float: right;
+  background-color: #f7cac9;
 }
-
+.navbar-top {
+  background: #f7cac9;
+}
 .sticky {
   position: fixed;
   top: 0;
@@ -43,7 +46,7 @@
   font-weight: bold;
 }
 #organization {
-  color: rgb(37, 166, 209);
+  color: rgb(76, 204, 247);
   margin-bottom: 0;
   padding-bottom: 0;
   font-size: 1.5vw;
