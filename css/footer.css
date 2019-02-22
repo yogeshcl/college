@@ -1,0 +1,100 @@
+#footer {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  background-color: rgba(241, 241, 241, 0.753);
+}
+
+#quicklinks {
+  margin-top: 10px;
+
+  float: left;
+  min-width: 200px;
+  width: 25vw;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2vw;
+}
+#contactus {
+  color: #640c16;
+  float: left;
+  width: 25vw;
+  min-width: 200px;
+  padding-left: 2vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+.followus,
+#followus {
+  float: left;
+  width: 30vw;
+  min-width: 200px;
+  padding-left: 2vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+#pcount {
+  position: relative;
+  float: left;
+  width: 100px;
+}
+.fa-facebook {
+  background: #3b5998;
+  color: white;
+}
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 70px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+.copyright {
+  width: 100%;
+}
+
+#serviceBox {
+  width: 100%;
+  padding-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+
+  background: rgb(156, 156, 156);
+}
+.serviceBox1 {
+  float: left;
+  width: 350px;
+  margin-left: 2vw;
+  text-align: center;
+}
+.serviceBox2 {
+  float: right;
+  text-align: end;
+}
+.serviceBox4 {
+  float: right;
+  margin-left: 10px;
+  margin-right: 10px;
+
+  width: fit-content;
+}
+
+@media (max-width: 650px) {
+  #quicklinks,
+  #contactus,
+  .followus,
+  #followus {
+    width: 100%;
+  }
+}

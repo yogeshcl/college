@@ -1,0 +1,73 @@
+#carouselExampleIndicators {
+  padding: 0px;
+  padding-bottom: 0;
+}
+
+.pn-ProductNav {
+  /* Make this scrollable when needed */
+  overflow-x: auto;
+  /* We don't want vertical scrolling */
+  overflow-y: hidden;
+  /* Make an auto-hiding scroller for the 3 people using a IE */
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  /* For WebKit implementations, provide inertia scrolling */
+  -webkit-overflow-scrolling: touch;
+  /* We don't want internal inline elements to wrap */
+  white-space: nowrap;
+  /* Remove the default scrollbar for WebKit implementations */
+}
+.pn-ProductNav::-webkit-scrollbar {
+  display: none;
+}
+
+.pn-ProductNav_Contents {
+  background-color: #bfc356;
+}
+.pn-ProductNav_Link {
+  background-color: #bfc356;
+  color: #888;
+  font-size: 2.2em;
+  min-width: 400px;
+  padding-left: 30px;
+  width: 30%;
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, sans-serif;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+a.pn-ProductNav_Link {
+  text-align: center;
+  font-family: Verdana, Geneva, sans-serif;
+  text-transform: uppercase;
+  font-size: 20px;
+  clear: both;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10vw;
+}
+a.pn-ProductNav_Link:hover {
+  background: #095aa1;
+  text-align: center;
+  color: white;
+  margin: 0;
+}
+nav.pn-ProductNav {
+  background-color: #bfc356;
+}
+.pn-ProductNav_Link + .pn-ProductNav_Link {
+}
+.pn-ProductNav_Link[aria-selected="true"] {
+  color: #111;
+}
+
+@media (max-width: 650px) {
+  nav.pn-ProductNav {
+    background-color: #bfc356;
+  }
+  .pn-ProductNav_Link {
+    min-width: 250px;
+    font-size: 1.5em;
+  }
+}
