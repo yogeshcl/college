@@ -2,7 +2,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
 <head>
-<title>JSS Academy of Technical Education</title>
+<title>Jssate-CSE</title>
 <meta http-equiv="description" content="page description" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <style type="text/css">@import "styles.css";</style>
@@ -10,11 +10,11 @@
 
 <body>
 
-<?php include("./mainpage/header.html");?>
-<?php include("./mainpage/content1.html");?>
-<?php include("./mainpage/content2.html");?>
+<?php include("dheader.html");?>
+<?php include("csecontent.html");?>
 
-<?php include("./mainpage/footer.html");?>
+
+<?php include("../footer.html");?>
 
 </body>
 </html>

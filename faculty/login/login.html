@@ -1,0 +1,282 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JJS Academy of Technical Education</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous" />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <!-- Theme CSS-->
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="./css/tab.css" />
+
+
+</head>
+
+<body>
+
+    <header>
+        <!-- Topbar-->
+        <div class="navbar-top ">
+            <div class="container">
+                <div id="uppernav">
+                    <ul class="nav navbar-nav align-items-center mr-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://jssgroup.dhi-edu.com/jssgroup_jssateb/">ERP Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.youtube.com/watch?v=MRw-MADIXe0&feature=youtu.be">Jssateb
+                                video</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://jssgroup.dhi-edu.com/jssgroup_jssateb/">Contact Us</a>
+                        </li>
+
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <hr />
+
+        <!-- Navbar-->
+
+        <div class="row" id="headinglogo">
+
+            <a href="../index.php"><img id="logo" src="../img/logo.png" alt="JSSATE-B" width="130" height="130" /></a>
+            <div id="container" class="headingname">
+                <p id="organization"> JSS MAHAVIDYAPEETHA</p>
+                <p id="clgname">JSS ACADEMY OF TECHNICAL EDUCATION</p>
+
+                <p id="addr">Bengaluru</p>
+            </div>
+        </div>
+
+
+
+
+
+    </header>
+
+    <div class="container">
+
+        <div class="tab-wrap">
+
+            <input type="radio" id="tab4" name="tabGroup2" class="tab" checked>
+            <label for="tab4">Profile</label>
+
+            <input type="radio" id="tab5" name="tabGroup2" class="tab">
+            <label for="tab5">Responsibilites</label>
+
+            <input type="radio" id="tab6" name="tabGroup2" class="tab">
+            <label for="tab6">Research</label>
+
+            <input type="radio" id="tab7" name="tabGroup2" class="tab">
+            <label for="tab7">Publications</label>
+
+            <div class="tab__content">
+                <h3>Profile</h3>
+                <div id="profiledata" style="float:left">
+                    <form name="form1" action="" method="post">
+
+                        <table>
+                            <tr>
+                                <td>PF Number</td>
+                                <td> <input type="text" name="pfnumber" id="name">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Name</td>
+                                <td> <input type="text" name="name" id="name">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Education Qualification</td>
+                                <td>
+                                    <input type="text" name="eduquali" id="eduquali">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Designation</td>
+                                <td>
+                                    <input list="desig" name="designation" id="designation">
+                                    <datalist id="desig">
+                                        <option value="Professor">
+                                        <option value="Professor &amp; Head">
+                                        <option value="Associate Professor">
+                                        <option value="Asst. Professor">
+                                        <option value="Adjunct Faculty">
+                                    </datalist>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Department</td>
+                                <td>
+                                    <input list="dept" name="department" id="department">
+                                    <datalist id="dept">
+                                        <option value="Civil Engineering">
+                                        <option value="Computer Science and Engineering">
+                                        <option value="Electronics  and Communication Engineering">
+                                        <option value="Electronics and Insturmentation  Science &amp Engineering">
+                                        <option value="Engineering Chemistry">
+                                        <option value="Engineering Mathematics">
+                                        <option value="Engineering Physics">
+                                        <option value="Industrial Engineering and Management">
+                                        <option value="Information Science and Engineering">
+                                        <option value="Master of Business Administration">
+                                        <option value="Mechanical Engineering">
+                                        <option value="Thermal Engineering">
+                                        <option value="VLSI Design & Embedded Systems">
+
+
+                                    </datalist>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Date of Birth</td>
+                                <td>
+                                    <input type="date" name="dob" id="dob">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Date of Join</td>
+                                <td>
+                                    <input type="date" name="doj" id="doj">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>No of years Experience </td>
+                                <td>
+                                    <input type="number" name="experience" id="experience">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Father Name</td>
+                                <td>
+                                    <input type="text" name="fathername" id="fathername">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Gender</td>
+                                <td>
+                                    <input list="s" name="sex" id="sex">
+                                    <datalist id="s">
+                                        <option value="Male">
+                                        <option value="Female">
+
+                                    </datalist>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Nationality</td>
+                                <td>
+                                    <input type="text" name="nationality" id="nationality">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Contact No</td>
+                                <td>
+                                    <input type="number" name="contactno" id="contactno">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Email Id</td>
+                                <td>
+                                    <input type="email" name="emailid" id="emailid">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Correspondance Address</td>
+                                <td>
+                                    <input type="text" name="caddress" id="caddress">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Permanent Address</td>
+                                <td>
+                                    <input type="text" name="paddress" id="paddress">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Achievements
+                                <td>
+                                    <input type="text" name="achievements" id="achievements">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Hobbies
+                                <td>
+                                    <input type="text" name="hobbies" id="hobbies">
+                                </td>
+                            </tr>
+
+
+
+                        </table>
+                        <div margin-left=40px>
+                            <input type="button" value="submit">
+                        </div>
+
+                    </form>
+                </div>
+                <div id="profileimage" style="float:right">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <h1>Profile picture</h1>
+                        <input type="file" name="pic" accept="image/*">
+                        <input type="submit" name="uploadprofile" value="Upload">
+                    </form>
+                </div>
+            </div>
+
+            <div class="tab__content">
+                <h3>Responsibilites</h3>
+                <form name="form1" action="" method="post">
+
+                    <table>
+                        <tr>
+                            <td>Responsibilites</td>
+                            <td>
+                                <textarea rows="4" cols="50">
+                                    </textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+
+            </div>
+
+            <div class="tab__content">
+                <h3>Research</h3>
+
+            </div>
+
+            <div class="tab__content">
+                <h3>Publications</h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+</body>
+
+</html>

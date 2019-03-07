@@ -61,7 +61,7 @@ font-family:helvetica;
 </head>
 <body>
 
-		<?php include("header.html");?>
+		<?php include("./mainpage/header.html");?>
 		<section class="main-page">
 	<div class="main-page-image-text">
 		<h1 class="Title">JSS Academy Of Technical Education</h1>
@@ -110,6 +110,6 @@ font-family:helvetica;
 
 	</div>
 </section>
-<?php include("footer.html");?>
+<?php include("./mainpage/footer.html");?>
 </body>
 </html>

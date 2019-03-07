@@ -9,12 +9,8 @@
 </head>
 
 <body>
+<?php include("./login/insert.php");?>
 
-<?php include("./mainpage/header.html");?>
-<?php include("./mainpage/content1.html");?>
-<?php include("./mainpage/content2.html");?>
-
-<?php include("./mainpage/footer.html");?>
 
 </body>
 </html>

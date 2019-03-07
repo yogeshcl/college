@@ -51,7 +51,7 @@ font-family:helvetica;
 </style>
 </head>
 <body>
-		<?php include("header.html");?>
+		<?php include("./mainpage/header.html");?>
 <section class="main-page">
 	<div class="main-page-image-text">
 		<h2 class="Title">JSS Mahavidyapeetha</h2>
@@ -75,6 +75,6 @@ font-family:helvetica;
 
 	</div>
 </section>
-<?php include("footer.html");?>
+<?php include("./mainpage/footer.html");?>
 </body>
 </html>

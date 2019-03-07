@@ -21,6 +21,8 @@
       src="scripts/jquery.bootstrap.newsbox.min.js"
       type="text/javascript"
     ></script>
+
+ 
   </head>
 
   <body>
@@ -113,7 +115,9 @@
               </div>
             </div>
             <div class=" row panel-footer">
-              <a href="#"> <p id="leftside"><u>All News</u></p></a>
+              <a href="#">
+                <p id="leftside"><u>All News</u></p></a
+              >
               <a href="#" class="prev" id="prev">▼</a
               ><a href="#" class="next" id="next">▲</a>
             </div>
@@ -131,7 +135,9 @@
                     <li class="news-item">
                       <table cellpadding="4">
                         <tr>
-                          <td><img src="images/11.jpg" width="60" /></td>
+                          <td>
+                            <img id="myImg1" src="images/11.jpg" width="60" />
+                          </td>
                           <td>
                             Workshop on Aircraft and Aerospace- Dept. of
                             MECH/ECE/EIE/IEM Workshop on Aircraft and Aerospace-
@@ -147,11 +153,7 @@
                       <table cellpadding="4">
                         <tr>
                           <td>
-                            <img
-                              src="images/11.jpg"
-                              width="60"
-                              class="img-circle"
-                            />
+                            <img id="myImg2" src="images/11.jpg" width="60" />
                           </td>
                           <td>
                             Calender of events academic year 2018-2019
@@ -164,11 +166,7 @@
                       <table cellpadding="4">
                         <tr>
                           <td>
-                            <img
-                              src="images/11.jpg"
-                              width="60"
-                              class="img-circle"
-                            />
+                            <img id="myImg3" src="images/11.jpg" width="60" />
                           </td>
                           <td>
                             UI and UX design contest
@@ -181,11 +179,7 @@
                       <table cellpadding="4">
                         <tr>
                           <td>
-                            <img
-                              src="images/11.jpg"
-                              width="60"
-                              class="img-circle"
-                            />
+                            <img id="myImg4" src="images/11.jpg" width="60" />
                           </td>
                           <td>
                             National conference on 'NCAIT-2019' Dept of ISE
@@ -198,11 +192,7 @@
                       <table cellpadding="4">
                         <tr>
                           <td>
-                            <img
-                              src="images/11.jpg"
-                              width="60"
-                              class="img-circle"
-                            />
+                            <img id="myImg5" src="images/11.jpg" width="60" />
                           </td>
                           <td>
                             Job Requirement for Project Coordinator and Project
@@ -215,11 +205,7 @@
                       <table cellpadding="4">
                         <tr>
                           <td>
-                            <img
-                              src="images/11.jpg"
-                              width="60"
-                              class="img-circle"
-                            />
+                            <img id="myImg6" src="images/11.jpg" width="60" />
                           </td>
                           <td>
                             “Ideathon” on 14th November by Dept. of EIE
@@ -232,11 +218,7 @@
                       <table cellpadding="4">
                         <tr>
                           <td>
-                            <img
-                              src="images/11.jpg"
-                              width="60"
-                              class="img-circle"
-                            />
+                            <img id="myImg7" src="images/11.jpg" width="60" />
                           </td>
                           <td>
                             FDP on “Machine Learning: Techniques & Tools”
@@ -250,9 +232,13 @@
               </div>
             </div>
             <div class="row panel-footer">
-              <a href="#"> <p id="leftside"><u>All Events</u></p></a>
+              <a href="#">
+                <p id="leftside"><u>All Events</u></p></a
+              >
+              <div class="floatleft">
               <a href="#" class="prev" id="prev">▼</a
               ><a href="#" class="next" id="next">▲</a>
+              </div>
             </div>
           </div>
         </div>
@@ -272,5 +258,145 @@
         });
       });
     </script>
+
+    <!--- the zoomed image-->
+    <div id="myModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="img01" />
+      <div id="caption"></div>
+    </div>
+
+    <!---  zoomed image display -->
+    <script>
+      // Get the modal
+      var modal = document.getElementById("myModal");
+
+      // Get the image and insert it inside the modal - use its "alt" text as a caption
+      var img1 = document.getElementById("myImg1");
+  
+
+      var modalImg = document.getElementById("img01");
+      var captionText = document.getElementById("caption");
+      img1.onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+      };
+   
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+        modal.style.display = "none";
+      };
+    </script>
+     <script>
+      var modal = document.getElementById("myModal");
+      var img2 = document.getElementById("myImg2");
+       var modalImg = document.getElementById("img01");
+      var captionText = document.getElementById("caption");
+      img2.onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+      };
+      var span = document.getElementsByClassName("close")[0];
+      span.onclick = function() {
+        modal.style.display = "none";
+      };
+    </script>
+    <script>
+      var modal = document.getElementById("myModal");
+      var img2 = document.getElementById("myImg2");
+       var modalImg = document.getElementById("img01");
+      var captionText = document.getElementById("caption");
+      img2.onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+      };
+      var span = document.getElementsByClassName("close")[0];
+      span.onclick = function() {
+        modal.style.display = "none";
+      };
+    </script>
+    <script>
+      var modal = document.getElementById("myModal");
+      var img3 = document.getElementById("myImg3");
+       var modalImg = document.getElementById("img01");
+      var captionText = document.getElementById("caption");
+      img3.onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+      };
+      var span = document.getElementsByClassName("close")[0];
+      span.onclick = function() {
+        modal.style.display = "none";
+      };
+    </script>
+    <script>
+      var modal = document.getElementById("myModal");
+      var img4 = document.getElementById("myImg4");
+       var modalImg = document.getElementById("img01");
+      var captionText = document.getElementById("caption");
+      img4.onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+      };
+      var span = document.getElementsByClassName("close")[0];
+      span.onclick = function() {
+        modal.style.display = "none";
+      };
+    </script>
+    <script>
+      var modal = document.getElementById("myModal");
+      var img5 = document.getElementById("myImg5");
+       var modalImg = document.getElementById("img01");
+      var captionText = document.getElementById("caption");
+      img5.onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+      };
+      var span = document.getElementsByClassName("close")[0];
+      span.onclick = function() {
+        modal.style.display = "none";
+      };
+    </script>
+    <script>
+      var modal = document.getElementById("myModal");
+      var img6 = document.getElementById("myImg6");
+       var modalImg = document.getElementById("img01");
+      var captionText = document.getElementById("caption");
+      img6.onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+      };
+      var span = document.getElementsByClassName("close")[0];
+      span.onclick = function() {
+        modal.style.display = "none";
+      };
+    </script>
+    <script>
+      var modal = document.getElementById("myModal");
+      var img7 = document.getElementById("myImg7");
+       var modalImg = document.getElementById("img01");
+      var captionText = document.getElementById("caption");
+      img7.onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+      };
+      var span = document.getElementsByClassName("close")[0];
+      span.onclick = function() {
+        modal.style.display = "none";
+      };
+    </script>
+
   </body>
 </html>
