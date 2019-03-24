@@ -6,10 +6,10 @@
     <title>Faculty</title>
 </head>
 <body>
+
+<!-- not defined still -->
 <?php include("./faculty/header.html");?>
 <?php include("./faculty/facultypage.php");?>
-
-
 <?php include("./mainpage/footer.html");?>
 
 
