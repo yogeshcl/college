@@ -1,6 +1,6 @@
 <?php 
  $conn = mysqli_connect('localhost','root','');
- if(!conn)
+ if(!$conn)
  {
      echo 'Not Connected to Server';
  }

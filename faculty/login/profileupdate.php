@@ -1,7 +1,7 @@
 <?php
 include_once('session.php');
  $conn = mysqli_connect('localhost','root','');
- if(!conn)
+ if(!$conn)
  {
      echo 'Not Connected to Server';
  }
@@ -11,6 +11,10 @@ include_once('session.php');
 
  $respo=mysqli_query($conn, "SELECT * FROM responsibilites WHERE pfno='$pfno'");
  $profile=mysqli_query($conn,"SELECT * FROM `probile` WHERE pfno='$pfno'");
+ $research=mysqli_query($conn, "SELECT * FROM research WHERE pfno='$pfno'");
+ $books=mysqli_query($conn, "SELECT * FROM books WHERE pfno='$pfno'");
+ $publications=mysqli_query($conn, "SELECT * FROM pubLications WHERE pfno='$pfno'");
+ $journals=mysqli_query($conn, "SELECT * FROM journals WHERE pfno='$pfno'");
 
 
   if(isset($_POST['profilee'])){

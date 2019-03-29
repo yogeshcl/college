@@ -17,6 +17,9 @@ $username = stripslashes($username);
 $password = stripslashes($password);
 $username = mysqli_real_escape_string($conn, $username);
 $password = mysqli_real_escape_string($conn, $password);
+$u="jssateadmin";
+if($username!=$u)
+{
 // Selecting Database
 $db = mysqli_select_db( $conn,"faculty");
 // SQL query to fetch information of registerd users and finds user match.
@@ -29,6 +32,25 @@ header("location: ./login/login.php"); // Redirecting To Other Page
 $error = "Username or Password is invalid";
 }
 mysqli_close($conn); // Closing Connection
+}
+else{
+    
+// Selecting Database
+$db = mysqli_select_db( $conn,"faculty");
+// SQL query to fetch information of registerd users and finds user match.
+$query = mysqli_query($conn, "select * from jssadmin where adpass='$password' AND jssateadmin='$username'");
+$rows = mysqli_num_rows($query);
+if ($rows == 1) {
+$_SESSION['jssateadmin']=$username; // Initializing Session
+header("location: ./login/adminlogin.php"); // Redirecting To Other Page
+} else {
+$error = "Username or Password is invalid";
+}
+mysqli_close($conn); // Closing Connection
+}
+
+
+
 }
 }
 ?>

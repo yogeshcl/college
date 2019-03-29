@@ -264,6 +264,9 @@ else
                     </form>
                 </div>
 
+ <!-- Responsibilities -->
+
+
                 <script>
                     $(document).ready(function(){
                         $('#insertt').click(function(){
@@ -330,7 +333,7 @@ else
                         ?>
                         <div id="newlink">
                                  <div class="feed" style="display:inline-block; padding-bottom: 10px;">
-                                    <input type="text" name="responsibility[]" value="<?php echo "{$rows['responsibility']}"; ?>" size="20">   
+                                    <input type="text" name="responsibility[]" value="<?php echo "{$rows['responsibility']}"; ?>" size="30">   
                                  </div>
                              </div>
             
@@ -356,20 +359,284 @@ else
                      <!-- Template. This whole data will be added directly to working form above -->
                      <div id="newlinktpl" style="display:none">
                          <div class="feed" style="display:inline-block; padding-bottom: 10px;">
-                          <input type="text" name="responsibility[]" value=""  size="20">
+                          <input type="text" name="responsibility[]" value=""  size="30">
                          </div>
                      </div>
-                       
-
             </div>
 
             <div class="tab__content">
                 <h3>Research</h3>
+                <script type="text/javascript">
+                    function validateresearch(frm)
+                    {
+                        var ele = frm.elements['research[]'];
+                        if (! ele.length)
+                        {
+                            alert(ele.value);
+                        }
+                    
+                        return true;
+                    }
+                    function add_feedresearch()
+                    {
+                        var div1 = document.createElement('div');
+                        div1.innerHTML = document.getElementById('newlinktp2').innerHTML;
+                    
+                        document.getElementById('newlink1').appendChild(div1);
+                    }
+                    </script>
+               
+               
+                     <form method="post" action="./research.php" onsubmit="return validateresearch(this)">
+                     <table>
+                     <tr>
+                         <td valign=top> Enter Research :</td>
+                         <td valign=top>
+                         <?php 
+                         while($rows=mysqli_fetch_assoc($research))
+                         {
+                            
+                        ?>
+                        <div id="newlink1">
+                                 <div class="feed" style="display:inline-block; padding-bottom: 10px;">
+                                 <textarea name="research[]"  cols="100" rows="3" maxlength="995"><?php echo "{$rows['description']}"; ?> </textarea>
+                                    <!-- <input type="text" name="research[]" value="" size="20">    -->
+                                 </div>
+                             </div>
+            
+                        <?php 
+                         }
+                        
+                                         
+                         ?>
+                             
+                             <p id="addnew">
+                                    <a href="javascript:add_feedresearch()">Add New </a>
+                                </p>
+                         </td>
+                     </tr>
+                     </table>
+                         <p>
+                             <br>
+                             <input type="submit" name="submitresearch">
+                             <input type="reset" name="reset1">
+                         </p>
+                  
+                     </form>
+                     <!-- Template. This whole data will be added directly to working form above -->
+                     <div id="newlinktp2" style="display:none">
+                         <div class="feed" style="display:inline-block; padding-bottom: 10px;">
+                         <textarea name="research[]"  cols="100" rows="3" maxlength="995"> </textarea>
+                          
+                         </div>
+                     </div>
 
             </div>
 
             <div class="tab__content">
-                <h3>Publications</h3>
+              
+                <!-- books -->
+                <script type="text/javascript">
+                    function validatebooks(frm)
+                    {
+                        var ele = frm.elements['books[]'];
+                        if (! ele.length)
+                        {
+                            alert(ele.value);
+                        }
+                        return true;
+                    }
+                    function add_feedbooks()
+                    {
+                        var div1 = document.createElement('div');
+                        div1.innerHTML = document.getElementById('newlinktp3').innerHTML;
+                    
+                        document.getElementById('newlink3').appendChild(div1);
+                    }
+                    </script>
+               
+               
+                     <form method="post" action="./books.php" onsubmit="return validatebooks(this)">
+                     <table>
+                     <tr>
+                         <td valign=top style="width:150px;"> Enter Books     :</td>
+                         <td valign=top>
+                         <?php 
+                         while($rows=mysqli_fetch_assoc($books))
+                         {
+                            
+                        ?>
+                        <div id="newlink3">
+                                 <div class="feed" style="display:inline-block; padding-bottom: 10px;">
+                                 <textarea name="books[]"  cols="100" rows="3" maxlength="995"><?php echo "{$rows['details']}"; ?></textarea>
+                                      
+                                 </div>
+                             </div>
+            
+                        <?php 
+                         }
+                        
+                                         
+                         ?>
+                             
+                             <p id="addnew">
+                                    <a href="javascript:add_feedbooks()">Add New </a>
+                                </p>
+                         </td>
+                     </tr>
+                     </table>
+                         <p>
+                             <br>
+                             <input type="submit" name="submitbooks">
+                             <input type="reset" name="reset1">
+                         </p>
+                  
+                     </form>
+                     <!-- Template. This whole data will be added directly to working form above -->
+                     <div id="newlinktp3" style="display:none">
+                         <div class="feed" style="display:inline-block; padding-bottom: 10px;">
+                         <textarea name="books[]"  cols="100" rows="3" maxlength="995"></textarea>
+                         </div>
+                     </div>
+
+
+                     <!-- publications -->
+                     <script type="text/javascript">
+                    function validatepublications(frm)
+                    {
+                        var ele = frm.elements['publications[]'];
+                        if (! ele.length)
+                        {
+                            alert(ele.value);
+                        }
+                        // for(var i=0; i<ele.length; i++)
+                        // {
+                        //     alert(ele[i].value);
+                        // }
+                        return true;
+                    }
+                    function add_feedpublications()
+                    {
+                        var div1 = document.createElement('div');
+                        div1.innerHTML = document.getElementById('newlinktp4').innerHTML;
+                    
+                        document.getElementById('newlink4').appendChild(div1);
+                    }
+                    </script>
+               
+               
+                     <form method="post" action="./publications.php" onsubmit="return validatepublications(this)">
+                     <table>
+                     <tr>
+                         <td valign=top style="width:150px;"> Enter Publications :</td>
+                         <td valign=top>
+                         <?php 
+                         while($rows=mysqli_fetch_assoc($publications))
+                         {
+                            
+                        ?>
+                        <div id="newlink4" style="width:10vw">
+                                 <div class="feed" style="display:inline-block; padding-bottom: 10px;" >
+                                 <textarea name="publications[]"  cols="100" rows="3" maxlength="995"><?php echo "{$rows['pubdetails']}"; ?></textarea>
+                                       
+                                 </div>
+                             </div>
+            
+                        <?php 
+                         }
+                        
+                                         
+                         ?>
+                             
+                             <p id="addnew">
+                                    <a href="javascript:add_feedpublications()">Add New </a>
+                                </p>
+                         </td>
+                     </tr>
+                     </table>
+                         <p>
+                             <br>
+                             <input type="submit" name="submitpublications">
+                             <input type="reset" name="reset1">
+                         </p>
+                  
+                     </form>
+                     <!-- Template. This whole data will be added directly to working form above -->
+                     <div id="newlinktp4" style="display:none">
+                         <div class="feed" style="display:inline-block; padding-bottom: 10px;">
+                         <textarea name="publications[]"  cols="100" rows="3" maxlength="995"></textarea>
+                          
+                         </div>
+                     </div>
+
+                     <!-- journals -->
+                     <script type="text/javascript">
+                    function validatejournals(frm)
+                    {
+                        var ele = frm.elements['journals[]'];
+                        if (! ele.length)
+                        {
+                            alert(ele.value);
+                        }
+                        // for(var i=0; i<ele.length; i++)
+                        // {
+                        //     alert(ele[i].value);
+                        // }
+                        return true;
+                    }
+                    function add_feedjournals()
+                    {
+                        var div1 = document.createElement('div');
+                        div1.innerHTML = document.getElementById('newlinktp5').innerHTML;
+                    
+                        document.getElementById('newlink5').appendChild(div1);
+                    }
+                    </script>
+               
+               
+                     <form method="post" action="./journals.php" onsubmit="return validatejournals(this)">
+                     <table>
+                     <tr>
+                         <td valign=top style="width:150px;"> Enter Journals :</td>
+                         <td valign=top>
+                         <?php 
+                         while($rows=mysqli_fetch_assoc($journals))
+                         {
+                            
+                        ?>
+                        <div id="newlink5">
+                                 <div class="feed" style="display:inline-block; padding-bottom: 10px;">
+                                 <textarea name="journals[]"  cols="100" rows="3" maxlength="995"><?php echo "{$rows['journaldetails']}"; ?></textarea>
+                                  
+                                 </div>
+                             </div>
+            
+                        <?php 
+                         }
+                        
+                                         
+                         ?>
+                             
+                             <p id="addnew">
+                                    <a href="javascript:add_feedjournals()">Add New </a>
+                                </p>
+                         </td>
+                     </tr>
+                     </table>
+                         <p>
+                             <br>
+                             <input type="submit" name="submitjournals">
+                             <input type="reset" name="reset1">
+                         </p>
+                  
+                     </form>
+                     <!-- Template. This whole data will be added directly to working form above -->
+                     <div id="newlinktp5" style="display:none">
+                         <div class="feed" style="display:inline-block; padding-bottom: 10px;">
+                         <textarea name="journals[]"  cols="100" rows="3" maxlength="995"></textarea>
+
+                                           </div>
+                     </div>
 
             </div>
 

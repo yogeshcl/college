@@ -33,17 +33,23 @@
         text-transform: Capitalize;
         display: inline-block;
     }
+    .contents{
+      width:auto; 
+      text-align:justify;
+    }
 
     @media (max-width: 780px) {
-      p.profile {
-        width: 28vw;
-      }
-      p.values {
-        width: 40vw;
+        p.profile {
+            width: 28vw;
+        }
 
-
+        p.values {
+            width: 40vw;
+        }
+        .contents{
+          width:auto;
+        }
     }
-  }
     </style>
 </head>
 
@@ -63,6 +69,11 @@
  $id = $_GET['id'];
  $result = mysqli_query($conn, "SELECT * FROM profile WHERE pfno='$id'");   
  $respo=mysqli_query($conn, "SELECT * FROM responsibilites WHERE pfno='$id'");
+ $reserach=mysqli_query($conn, "SELECT * FROM research WHERE pfno='$id'");
+ $books=mysqli_query($conn, "SELECT * FROM books WHERE pfno='$id'");
+ $publications=mysqli_query($conn, "SELECT * FROM pubLications WHERE pfno='$id'");
+ $journals=mysqli_query($conn, "SELECT * FROM journals WHERE pfno='$id'");
+
 ?>
 
 
@@ -104,16 +115,18 @@ if ($row = $result->fetch_assoc()) {
 
                 <p class="profile">Date of Join </p>: <p class="values"><?php echo $row['doj'];?> </p><br>
                 <p class="profile">Date of birth </p>: <p class="values"><?php echo $row['dob'];?> </p><br>
-                <p class="profile">No of Years Experience </p>: <p class="values"><?php echo $row['experience'];?> </p><br>
+                <p class="profile">No of Years Experience </p>: <p class="values"><?php echo $row['experience'];?> </p>
+                <br>
                 <p class="profile">father name </p>: <p class="values"><?php echo $row['fathername'];?> </p><br>
                 <p class="profile">gender </p>: <p class="values"><?php echo $row['sex'];?> </p><br>
-                <p class="profile">contact no </p>: <p class="values"><?php echo $row['contactno'];?> </p><br>
-                <p class="profile" >email id </p>: <p class="values" style="text-transform:Lowercase;"><?php echo $row['emailid'];?> </p><br>
+                <p class="profile">contact no </p>:<a href="tel:<?php echo $row['contactno'];?>"> <p class="values"><?php echo $row['contactno'];?> </p></a><br>
+                <p class="profile">email id </p>: <a href="mailto: <?php echo $row['emailid'];?>"><p class="values" style="text-transform:Lowercase;">
+                    <?php echo $row['emailid'];?> </p></a><br>
                 <p class="profile">nationality </p>: <p class="values"><?php echo $row['nationality'];?> </p><br>
                 <p class="profile">Correspondance Addresss </p>: <p class="values"><?php echo $row['caddress'];?> </p>
                 <br>
                 <p class="profile">Permanenent address </p>: <p class="values"><?php echo $row['paddress'];?> </p><br>
-                
+
                 <p class="profile">Achievements </p>: <p class="values"><?php echo $row['achievements'];?> </p><br>
                 <p class="profile">Hobbies </p>: <p class="values"><?php echo $row['hobbies'];?> </p><br>
 
@@ -126,37 +139,171 @@ else
 ?>
             </div>
 
-        
 
-        <div class="tab__content">
-            <!-- <h3>Responsibilites</h3> -->
-          
-            <ul>
-            <?php 
+
+            <div class="tab__content">
+                <!-- <h3>Responsibilites</h3> -->
+
+                <ul>
+                    <?php 
              while($rows=mysqli_fetch_assoc($respo))
              {
+               if(strlen($rows['responsibility'])>1)
+               {
+               
             ?>
-          <li><?php echo " {$rows['responsibility']}"; ?> </li>  
+                    <li><?php echo " {$rows['responsibility']}"; ?> </li>
 
-            <?php 
-             }
+                    <?php 
+               }
+               else
+               {
+                 echo "None";
+               }
+            }
+               
+          
+             ?>
+                </ul>
+            </div>
+
+            <!-- Research -->
+
+            <div class="tab__content" >
+              <div class="contents" >
+
+                <ul >
+                    <?php 
+             while($rows=mysqli_fetch_assoc($reserach))
+             {
+               if(strlen($rows['description'])>1 )
+               {
+               
+            ?>
+                    <li ><?php  echo " {$rows['description']}"; ?></li>
+
+                  
+
+                    <?php 
+               }
+               else
+               {
+                 echo "None";
+               }
+            }
+               
+        
+             ?>
+                </ul>
+</div>
+            </div>
+
+
+ <!-- Books -->
+
+            <div class="tab__content" >
+            <div class="contents" >
+                <h5 id="books">Books</h5>
+                <ul>
+                    <?php 
+            $count=0;
+             while($rows=mysqli_fetch_assoc($books))
+             {
+               if(strlen($rows['details'])>1)
+               {
+               
+            ?>
+                    <li><?php echo " {$rows['details']}"; ?> </li>
+
+                    <?php 
+             $count++;
+               }
+               else
+               {
+                 ?>
+
+                    <script>
+                    $("#books").css("display", "none");
+                    </script>
+                    <?php
+               }
+              
+            }
+            if($count>0) {
+            ?>
+                    <hr><?php }
+                
+         
             //  else 
             //    echo "<h3>No Responsibilites";
              ?>
-             </ul>
+
+                </ul>
+
+                <h5 id="publications">Publications </h5>
+                <ul>
+                    <?php 
+            $count=0;
+             while($rows=mysqli_fetch_assoc($publications))
+             {
+               if(strlen($rows['pubdetails'])>1)
+               {
+               
+            ?>
+                    <li><?php echo " {$rows['pubdetails']}"; ?> </li>
+
+                    <?php 
+               }
+               else
+               { ?>
+
+                    <script>
+                    $("#publications").css("display", "none");
+                    </script>
+                    <?php
+               }
+              
+            }
+            if($count>0){
+            ?>
+                    <hr><?php }
+        
+             ?>
+
+                </ul>
+
+                <h5 id="journals">Journals</h5>
+                <ul>
+                    <?php 
+             while($rows=mysqli_fetch_assoc($journals))
+             {
+               if(strlen($rows['journaldetails'])>1)
+               {
+               
+            ?>
+                    <li><?php echo "{$rows['journaldetails']}"; ?> </li>
+
+                    <?php 
+               }
+               else
+               { ?>
+
+                    <script>
+                    $("#journals").css("display", "none");
+                    </script>
+                    <?php
+               }
+            }
+           
+             ?>
+                </ul>
+
+
+          </div>
+
+            </div>
+
         </div>
-
-        <div class="tab__content">
-            <h3>Research</h3>
-
-        </div>
-
-        <div class="tab__content">
-            <h3>Publications</h3>
-
-        </div>
-
-    </div>
 
     </div>
 
