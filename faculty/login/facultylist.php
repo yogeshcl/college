@@ -30,7 +30,7 @@ if(count($_POST))
         
         if(trim($_POST['faculty1'][$i])!=""){
 
-            $chk="Select * from `adminlogin` where pfno='".$_POST['faculty1'][$i]."'";
+            $chk="SELECT `pfno` FROM `adminlogin` where pfno='".$_POST['faculty1'][$i]."'";
             //$row = mysql_fetch_array($chk);
             $row=$conn->query($chk);
             //echo $row;
@@ -70,7 +70,7 @@ if(count($_POST))
 
 	
     }
- // header("Location:./adminlogin.php"); 
+  header("Location:./adminlogin.php"); 
 }
 
   

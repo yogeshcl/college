@@ -69,12 +69,23 @@ $jssadmin=$_SESSION['jssateadmin'];
             <div id="container" class="headingname">
                 <p id="organization"> JSS MAHAVIDYAPEETHA</p>
                 <p id="clgname">JSS ACADEMY OF TECHNICAL EDUCATION</p>
-
                 <p id="addr">Bengaluru</p>
             </div>
         </div>
 
 
+
+        <script>
+            en.onClick=function(){
+                <?php {
+                                         $remove="DELETE FROM `adminlogin` WHERE `adminlogin`.`pfno`={$rows['pfno']}";
+
+                                         $row=$conn->query($remove);
+                                             
+                                    }?>
+
+            }
+            </script>
 
 
 
@@ -127,13 +138,18 @@ $jssadmin=$_SESSION['jssateadmin'];
                         ?>
                         <div id="newlink">
                                  <div class="feed" style="display:inline-block; padding-bottom: 10px;">
+                                 <input name="checkbox[]" type="checkbox" id="checkbox[]" value="<? echo $rows['pfno']; ?>">
                                     <input type="text" name="faculty1[]" value="<?php echo "{$rows['pfno']}"; ?>" size="30">
                                     <input type="text" name="faculty2[]" value="<?php echo "{$rows['name']}"; ?>" size="30">  
                                     <input type="text" name="faculty3[]" value="<?php echo "{$rows['email']}"; ?>" size="30">     
+                                    <input type="submit" name="delete" value="Delete" id="delete">
                                  </div>
                              </div>
-            
+
+                                         
                         <?php 
+                       
+
                          }
                         
                                          
@@ -168,7 +184,29 @@ $jssadmin=$_SESSION['jssateadmin'];
     </div>
 
 
+    <?php
+// Check if delete button active, start this
+$count = mysqli_num_rows($faculty);
+echo "$count";
 
+if(isset($_POST['delete']))
+    {
+         $delete_id = $_POST['checkbox'];
+         $id = count($delete_id );
+         if (count($id) > 0)
+          {
+             foreach ($delete_id as $id_d)
+             {
+                $sql = "DELETE FROM `adminlogin` WHERE `adminlogin`.`pfno`=$pfno";
+                $delete = mysql_query($sql);
+            }
+        }
+        if($delete)
+        {
+            echo $id." Records deleted Successfully.";
+        }
+    }
+?>
 
 </body>
 
