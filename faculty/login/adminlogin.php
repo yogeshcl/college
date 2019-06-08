@@ -2,6 +2,14 @@
 include_once('asession.php');
 include_once('db.php');
 $jssadmin=$_SESSION['jssateadmin'];
+$update="UPDATE adminlogin AS t1
+INNER JOIN profile AS t2 ON t1.pfno = t2.pfno
+SET t1.name = t2.name, t1.email=t2.emailid";
+
+
+
+
+$result1=mysqli_query($conn,$update);
 
  $faculty = mysqli_query($conn, "SELECT * FROM adminlogin ");   
 
@@ -75,34 +83,51 @@ $jssadmin=$_SESSION['jssateadmin'];
 
 
 
-        <script>
-            en.onClick=function(){
-                <?php {
-                                         $remove="DELETE FROM `adminlogin` WHERE `adminlogin`.`pfno`={$rows['pfno']}";
-
-                                         $row=$conn->query($remove);
-                                             
-                                    }?>
-
-            }
-            </script>
+  
 
 
 
     </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <div class="container">
 
         <div class="tab-wrap">
 
             <input type="radio" id="tab4" name="tabGroup2" class="tab" checked>
-            <label for="tab4">All Faculties</label>
+            <label for="tab4"><h4><b>Faculty List</b></h4></label>
 
-           
+            <input type="radio" id="tab5" name="tabGroup2" class="tab">
+            <label for="tab5"><h4><b>Log Details</b></h4></label>
+
+    
 
 
             <div class="tab__content">
-                <h3>Faculty list</h3>
+                
                 <script type="text/javascript">
                     function validate(frm)
                     {
@@ -111,7 +136,7 @@ $jssadmin=$_SESSION['jssateadmin'];
                         var ele3 = frm.elements['faculty1[]'];
                         if (! ele1.length)
                         {
-                            alert(ele1.value);
+                           // alert(ele1.value);
                         }
                       
                         return true;
@@ -126,11 +151,17 @@ $jssadmin=$_SESSION['jssateadmin'];
                     </script>
                
                
-                     <form method="post" action="./facultylist.php" onsubmit="return validate(this)">
-                     <table>
+                    
+                     <table id="facultylist">
+                     
                      <tr>
-                         <td valign=top> Enter Faculties :</td>
+                         
                          <td valign=top>
+                         <p id="addnew">
+                                    <a href="javascript:add_feed()"><button> Add New Faculty </button> </a>
+                                </p>
+                                <form method="post" >
+                                
                          <?php 
                          while($rows=mysqli_fetch_assoc($faculty))
                          {
@@ -138,11 +169,22 @@ $jssadmin=$_SESSION['jssateadmin'];
                         ?>
                         <div id="newlink">
                                  <div class="feed" style="display:inline-block; padding-bottom: 10px;">
-                                 <input name="checkbox[]" type="checkbox" id="checkbox[]" value="<? echo $rows['pfno']; ?>">
-                                    <input type="text" name="faculty1[]" value="<?php echo "{$rows['pfno']}"; ?>" size="30">
-                                    <input type="text" name="faculty2[]" value="<?php echo "{$rows['name']}"; ?>" size="30">  
-                                    <input type="text" name="faculty3[]" value="<?php echo "{$rows['email']}"; ?>" size="30">     
-                                    <input type="submit" name="delete" value="Delete" id="delete">
+
+                                 
+
+              
+                                    <input type="text" name="faculty1[]" value="<?php echo "{$rows['pfno']}"; ?>" size="30" disabled >
+                                    <input type="text" name="faculty2[]" value="<?php echo "{$rows['name']}"; ?>" size="30" disabled>  
+                                    <input type="text" name="faculty3[]" value="<?php echo "{$rows['email']}"; ?>" size="30" disabled>  
+                                    <input type="hidden" name="pfno" value="<?php echo "{$rows['pfno']}"; ?>">
+                                    <input type="submit" name="delete" value="Delete">
+   
+                                    <!-- <button id="delete[]"  onclick="myFunction()">Delete</button> -->
+                                   
+
+
+
+                                    
                                  </div>
                              </div>
 
@@ -154,58 +196,106 @@ $jssadmin=$_SESSION['jssateadmin'];
                         
                                          
                          ?>
-                             
-                             <p id="addnew">
-                                    <a href="javascript:add_feed()"> New Faculty </a>
-                                </p>
+                             </form>
+                            
                          </td>
                      </tr>
                      </table>
-                         <p>
+                     <p id="demo"></p>
+
+                         <!-- <p>
                              <br>
-                             <input type="submit" name="submitfaculty">
-                             <input type="reset" name="reset1">
-                         </p>
+                             <input type="submit" name="submitfaculty" value="Update ">
+                            
+                         </p> -->
                   
-                     </form>
+                    
                      <!-- Template. This whole data will be added directly to working form above -->
                      <div id="newlinktpl" style="display:none">
                          <div class="feed" style="display:inline-block; padding-bottom: 10px;">
+                         <form method="post" action="./newfacultyinsert.php" onsubmit="return validate(this)">
                           <input type="text" name="faculty1[]" value=""  size="30">
-                          <input type="text" name="faculty2[]" value=""  size="30">
-                          <input type="text" name="faculty3[]" value=""  size="30">
+                         
+                          <input type="submit" name="newfaculty" value="add">
+                         
                          </div>
                      </div>
             </div>
+            <div class="tab__content">
+                <!-- <h3>Log Details</h3> -->
 
+                <?php include("./logdetails.php");?>
+               
+
+
+
+            </div>
         
-        </div>
+        
 
     </div>
+                        </div>
+                        </div>
 
+  
 
-    <?php
-// Check if delete button active, start this
-$count = mysqli_num_rows($faculty);
-echo "$count";
-
-if(isset($_POST['delete']))
-    {
-         $delete_id = $_POST['checkbox'];
-         $id = count($delete_id );
-         if (count($id) > 0)
-          {
-             foreach ($delete_id as $id_d)
-             {
-                $sql = "DELETE FROM `adminlogin` WHERE `adminlogin`.`pfno`=$pfno";
-                $delete = mysql_query($sql);
+                        <!-- ---------------------Deleteting -->
+<script type = "text/javascript">
+         <!--
+            function myFunction() {
+               var retVal = confirm("Are you sure you want to delete the faculty ?");
+               if( retVal == true ) {
+                   alert("deleted");
+                 <?php  include_once('deletefaculty.php'); ?>
+                //include_once('deletefaculty.php');
+                  
+                  return true;
+               } else {
+             alert("Not Deleted");
+                 
+                  return false;
+               }
             }
-        }
-        if($delete)
-        {
-            echo $id." Records deleted Successfully.";
-        }
-    }
+         //-->
+      </script>  
+
+
+
+<!-- ---------------------Deleting -->
+<?php
+if(isset($_REQUEST['delete']))
+ {
+    $del="DELETE from adminlogin where pfno='".$_REQUEST['pfno']."' ";
+
+   echo "<script>{
+   var retVal = confirm(\"Are you sure you want to delete the faculty ?\");
+   if( retVal == true ) {
+       alert(\"deleted\");
+    
+      
+      return true;
+   } else {
+ alert(\"Not Deleted\");
+     
+      return false;
+   }}
+   </script>";
+    
+    $deletion=mysqli_query($conn, $del);
+ if($deletion){
+echo ' <script> alert("Faculty is Sucessfully deleted")</script>';
+echo '<script>$(\'#facultylist\').load("/divcontents");</script>';
+//header('Location: '.$_SERVER['REQUEST_URI']);
+  
+
+
+      }
+  else
+echo ' <script> alert("Deletion Failed")</script>';
+
+ }
+                       
+
 ?>
 
 </body>

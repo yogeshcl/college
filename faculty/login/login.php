@@ -3,7 +3,8 @@ include_once('session.php');
 $pfno=$_SESSION['pfno'];
  include("./profileupdate.php");
  include("./uploadimage.php");
- $result = mysqli_query($conn, "SELECT * FROM profile WHERE pfno='$pfno'");   
+ $result = mysqli_query($conn, "SELECT * FROM profile WHERE pfno='$pfno'");  
+ $result1 = mysqli_query($conn, "SELECT profilepic FROM profile WHERE pfno='$pfno'");    
 
 
 ?>
@@ -255,12 +256,22 @@ else
 
 
 
-                <div id="profileimage" style="float:right">
+                <div id="profileimage" style="float:right; margin-left:auto; margin-right:auto; text-align: center;">
                         <h1>Profile picture</h1>
-                    <form action="" method="post" enctype="multipart/form-data">
+                        
+                        <?php 
+if ($row1 = $result1->fetch_assoc()) {
+
+    echo "<img src='../../profilepics/{$row1['profilepic']}' height='200px' width='200px'>";
+
+}
+
+                        ?>
+                    <form action="./uploadimage.php" method="post" enctype="multipart/form-data">
                       
+
                         <input type="file" name="image" id="image" />
-                        <input type="Submit" name="insertt" id="insertt" />
+                        <input type="Submit" value="Upload" name="insertt" id="insertt" />
                     </form>
                 </div>
 
@@ -390,7 +401,7 @@ else
                      <form method="post" action="./research.php" onsubmit="return validateresearch(this)">
                      <table>
                      <tr>
-                         <td valign=top> Enter Research :</td>
+                         <td valign=top>  Area of Research :</td>
                          <td valign=top>
                          <?php 
                          while($rows=mysqli_fetch_assoc($research))
@@ -459,7 +470,7 @@ else
                      <form method="post" action="./books.php" onsubmit="return validatebooks(this)">
                      <table>
                      <tr>
-                         <td valign=top style="width:150px;"> Enter Books     :</td>
+                         <td valign=top style="width:150px;"> Books published  :</td>
                          <td valign=top>
                          <?php 
                          while($rows=mysqli_fetch_assoc($books))
@@ -528,7 +539,7 @@ else
                      <form method="post" action="./publications.php" onsubmit="return validatepublications(this)">
                      <table>
                      <tr>
-                         <td valign=top style="width:150px;"> Enter Publications :</td>
+                         <td valign=top style="width:150px;"> Conference Details :</td>
                          <td valign=top>
                          <?php 
                          while($rows=mysqli_fetch_assoc($publications))
@@ -597,7 +608,7 @@ else
                      <form method="post" action="./journals.php" onsubmit="return validatejournals(this)">
                      <table>
                      <tr>
-                         <td valign=top style="width:150px;"> Enter Journals :</td>
+                         <td valign=top style="width:150px;">Journal Details :</td>
                          <td valign=top>
                          <?php 
                          while($rows=mysqli_fetch_assoc($journals))

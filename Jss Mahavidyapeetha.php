@@ -28,8 +28,8 @@ float:left;
 
 .main-page-description-right{
 width:25%;
-height:400px;
-border:10px solid black;
+height:350px;
+border:5px solid black;
 float:left;
 font-family:helvetica;
 }
@@ -70,7 +70,12 @@ font-family:helvetica;
 
 	</div>
 	<div class="main-page-description-right">
-	<p> </p>
+	<p> 
+
+	<img class="alignright wp-image-577" src="https://files.indcareer.com/files/notices/2015-05/jssmvp_0.gif?q=files/notices/2015-05/jssmvp_0.gif" alt="jss-swamiji" width="360" height="340" >
+
+	
+	</p>
 </div>
 
 	</div>

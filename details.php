@@ -22,6 +22,10 @@
 
 
     <style>
+      .profilepic{
+        float:right;
+        padding:30px;
+      }
     p.profile {
         width: 200px;
         text-transform: Capitalize;
@@ -37,11 +41,26 @@
       width:auto; 
       text-align:justify;
     }
-
-    @media (max-width: 780px) {
-        p.profile {
-            width: 28vw;
+    @media (max-width: 1000px) {
+      .details{
+        float:left;
+      }
+      .profilepic{
+          float:left;
+         
+    
+    vertical-align: middle;
+    min-height: 150px;
+    min-width: 150px;
+    padding-right:25vw;
         }
+    }
+
+    @media (max-width: 710px) {
+        p.profile {
+            width: 25vw;
+        }
+       
 
         p.values {
             width: 40vw;
@@ -60,14 +79,11 @@
 
 
 
-
-
-
-
     <?php
  include("./faculty/login/db.php");
  $id = $_GET['id'];
  $result = mysqli_query($conn, "SELECT * FROM profile WHERE pfno='$id'");   
+ $result1 = mysqli_query($conn, "SELECT profilepic FROM profile WHERE pfno='$id'");  
  $respo=mysqli_query($conn, "SELECT * FROM responsibilites WHERE pfno='$id'");
  $reserach=mysqli_query($conn, "SELECT * FROM research WHERE pfno='$id'");
  $books=mysqli_query($conn, "SELECT * FROM books WHERE pfno='$id'");
@@ -101,7 +117,26 @@
                 <h5>Publications</h5>
             </label>
 
-            <div class="tab__content" style=" vertical-align: middle;">
+            
+            <div class="tab__content" >
+              <div class="profilepic">
+            <?php 
+if ($row1 = $result1->fetch_assoc()) {
+   if($row1['profilepic']!=NULL){
+    echo "<img src='./profilepics/{$row1['profilepic']}' height='200px' width='200px' alt=\"No Image\" onerror=\"this.onerror=null;this.src='https://www.diversegreen.org/wp-content/uploads/2015/09/photo-not-available-clip-art1.png';\">";
+   }
+    else 
+{
+  echo "<img src='https://www.diversegreen.org/wp-content/uploads/2015/09/photo-not-available-clip-art1.png' height='200px' width='200px'>";
+
+}
+
+}
+
+                        ?>
+                        </div>
+
+            <div class="details" style="float:left;">
 
                 <?php 
 if ($row = $result->fetch_assoc()) {
@@ -130,7 +165,9 @@ if ($row = $result->fetch_assoc()) {
                 <p class="profile">Achievements </p>: <p class="values"><?php echo $row['achievements'];?> </p><br>
                 <p class="profile">Hobbies </p>: <p class="values"><?php echo $row['hobbies'];?> </p><br>
 
+      
 
+                     
 
                 <?php
 }
@@ -139,7 +176,9 @@ else
 ?>
             </div>
 
-
+</div>
+   
+           
 
             <div class="tab__content">
                 <!-- <h3>Responsibilites</h3> -->
@@ -199,10 +238,75 @@ else
             </div>
 
 
- <!-- Books -->
+
 
             <div class="tab__content" >
             <div class="contents" >
+
+<!-- journals -->
+
+            <h5 id="journals">Journals</h5>
+                <ul>
+                    <?php 
+             while($rows=mysqli_fetch_assoc($journals))
+             {
+               if(strlen($rows['journaldetails'])>1)
+               {
+               
+            ?>
+                    <li><?php echo "{$rows['journaldetails']}"; ?> </li>
+
+                    <?php 
+               }
+               else
+               { ?>
+
+                    <script>
+                    $("#journals").css("display", "none");
+                    </script>
+                    <?php
+               }
+            }
+           
+             ?>
+                </ul>
+
+                <!-- Publications -->
+                <h5 id="publications">Conferences </h5>
+                <ul>
+                    <?php 
+            $count1=0;
+             while($rows=mysqli_fetch_assoc($publications))
+             {
+               if(strlen($rows['pubdetails'])>1)
+               {
+               
+            ?>
+                    <li><?php echo " {$rows['pubdetails']}"; ?> </li>
+
+                    <?php 
+               }
+               else
+               { ?>
+
+                    <script>
+                    $("#publications").css("display", "none");
+                    </script>
+                    <?php
+               }
+              
+            }
+            if($count1>0){
+            ?>
+                    <hr><?php }
+        
+             ?>
+
+                </ul>
+
+
+
+                <!-- Books -->
                 <h5 id="books">Books</h5>
                 <ul>
                     <?php 
@@ -240,63 +344,8 @@ else
 
                 </ul>
 
-                <h5 id="publications">Publications </h5>
-                <ul>
-                    <?php 
-            $count=0;
-             while($rows=mysqli_fetch_assoc($publications))
-             {
-               if(strlen($rows['pubdetails'])>1)
-               {
                
-            ?>
-                    <li><?php echo " {$rows['pubdetails']}"; ?> </li>
-
-                    <?php 
-               }
-               else
-               { ?>
-
-                    <script>
-                    $("#publications").css("display", "none");
-                    </script>
-                    <?php
-               }
-              
-            }
-            if($count>0){
-            ?>
-                    <hr><?php }
-        
-             ?>
-
-                </ul>
-
-                <h5 id="journals">Journals</h5>
-                <ul>
-                    <?php 
-             while($rows=mysqli_fetch_assoc($journals))
-             {
-               if(strlen($rows['journaldetails'])>1)
-               {
                
-            ?>
-                    <li><?php echo "{$rows['journaldetails']}"; ?> </li>
-
-                    <?php 
-               }
-               else
-               { ?>
-
-                    <script>
-                    $("#journals").css("display", "none");
-                    </script>
-                    <?php
-               }
-            }
-           
-             ?>
-                </ul>
 
 
           </div>

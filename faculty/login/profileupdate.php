@@ -32,7 +32,7 @@ include_once('session.php');
   $qry=mysqli_query($conn, $sql);
 
   if(!$qry)
-  echo ' <script> alert("Failed to save Data")</script>';
+  echo ' <script> alert("Failed to save profileData")</script>';
       
 }
 ?>

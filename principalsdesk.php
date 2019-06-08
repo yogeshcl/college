@@ -19,7 +19,7 @@
 
 
 		.main-page-description {
-
+         
 			display: table-row;
 		}
 
@@ -37,7 +37,7 @@
 		.main-page-description-image {
 			width: 70%;
 			padding-left: 20px;
-			.
+			
 		}
 
 
@@ -89,10 +89,21 @@
 		<div class="main-page-description">
 
 			<div class="main-page-description-image">
+
+			  <div>
 				<br>
 				<img style="width:50%;" class="Images" src="img/JSSATE_Principal.jpg" align="left" alt="Principal_s_desk">
-
+				<div>
+<p style="text-align: left;"><span style="font-size: 14pt;"><a href="https://jssateb.ac.in/wp-content/uploads/2019/01/MVLATTE_Profile_21012019.pdf"><span style="color: #c99619;"><strong>Prof. Mrityunjaya V. Latte,</strong> M.Tech, PhD</span></a></span></p>
+<p style="text-align: left;"><strong>JSS ACADEMY OF TECHNICAL EDUCATION, Bengaluru</strong><br>
+ <img class="alignnone size-full wp-image-322" src="https://jssateb.ac.in/wp-content/uploads/2016/10/JSS-ICONS-PHONE.png" alt="jss-icons-phone" width="16" height="16"> <strong>: 080-28612565,&nbsp;<img class="alignnone size-full wp-image-323" src="https://jssateb.ac.in/wp-content/uploads/2016/10/JSS-ICON-FAX.png" alt="jss-icon-fax" width="16" height="16"> : 080-28612706</strong><br>
+ <strong> <img class="alignnone wp-image-315" src="https://jssateb.ac.in/wp-content/uploads/2016/10/JSS-ICON-MAIL.png" alt="jss-icon-mail" width="15" height="15"> : mvlatte@rediffmail.com <span style="color: #800000;">|</span> principal@jssateb.ac.in</strong></p>
+<p>&nbsp;</p>
+</div>
+				
+	</div>
 			</div>
+
 
 			<div class="main-page-description-left" style="text-align:justify;">
 
@@ -113,8 +124,10 @@
 			<div class="main-page-description-right">
 				<p> </p>
 			</div>
+			
 
 		</div>
+	
 	</section>
 	<?php include("./mainpage/footer.html");?>
 </body>

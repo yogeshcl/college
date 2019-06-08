@@ -22,7 +22,7 @@ header("location: login.php");
 
 
 <div id="main">
-<h1>Faculty</h1>
+<h1><a href="../index.php">Home Page</a></h1>
 <div id="login">
 <h2>Login Form</h2>
 <form action="" method="post">

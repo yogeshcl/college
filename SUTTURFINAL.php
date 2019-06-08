@@ -32,8 +32,8 @@ float:left;
 
 .main-page-description-right{
 width:25%;
-height:400px;
-border:10px solid black;
+height:700px;
+border:5px solid black;
 float:left;
 font-family:helvetica;
 }
@@ -85,7 +85,10 @@ font-family:helvetica;
      </div>	
 
 <div class="main-page-description-right">
-	<p> </p>
+	<p> 
+
+	<img class="alignright wp-image-577" src="https://jssateb.ac.in/wp-content/uploads/2016/10/JSS-Swamiji-145x300.jpg" alt="jss-swamiji" width="300" height="680" srcset="https://jssateb.ac.in/wp-content/uploads/2016/10/JSS-Swamiji-145x300.jpg 145w, https://jssateb.ac.in/wp-content/uploads/2016/10/JSS-Swamiji-768x1588.jpg 768w, https://jssateb.ac.in/wp-content/uploads/2016/10/JSS-Swamiji-495x1024.jpg 495w, https://jssateb.ac.in/wp-content/uploads/2016/10/JSS-Swamiji.jpg 1200w" sizes="(max-width: 380px) 100vw, 380px">
+	</p>
 </div>
 
 </div>
