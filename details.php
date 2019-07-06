@@ -89,6 +89,8 @@
  $books=mysqli_query($conn, "SELECT * FROM books WHERE pfno='$id'");
  $publications=mysqli_query($conn, "SELECT * FROM pubLications WHERE pfno='$id'");
  $journals=mysqli_query($conn, "SELECT * FROM journals WHERE pfno='$id'");
+ $fundedresearch=mysqli_query($conn, "SELECT * FROM fundedresearch WHERE pfno='$id'");
+ $consultancy=mysqli_query($conn, "SELECT * FROM consultancy WHERE pfno='$id'");
 
 ?>
 
@@ -232,6 +234,61 @@ else
             }
                
         
+             ?>
+                </ul>
+
+                <!---fundeResearch---->
+                <h5 id="fundedresearch">fundedresearch</h5>
+                <ul>
+                    <?php 
+             while($rows=mysqli_fetch_assoc($fundedresearch))
+             {
+               if(strlen($rows['Fundedresearch'])>1)
+               {
+               
+            ?>
+                    <li><?php echo "{$rows['Fundedresearch']}"; ?> </li>
+
+                    <?php 
+               }
+               else
+               { ?>
+
+                    <script>
+                    $("#fundedresearch").css("display", "none");
+                    </script>
+                    <?php
+               }
+            }
+           
+             ?>
+                </ul>
+
+
+<!-----consultancy------------>
+                <h5 id="consultancy">consultancy</h5>
+                <ul>
+                    <?php 
+             while($rows=mysqli_fetch_assoc($consultancy))
+             {
+               if(strlen($rows['consultancy'])>1)
+               {
+               
+            ?>
+                    <li><?php echo "{$rows['consultancy']}"; ?> </li>
+
+                    <?php 
+               }
+               else
+               { ?>
+
+                    <script>
+                    $("#consultancy").css("display", "none");
+                    </script>
+                    <?php
+               }
+            }
+           
              ?>
                 </ul>
 </div>

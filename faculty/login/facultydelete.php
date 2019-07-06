@@ -3,7 +3,7 @@ include_once('asession.php');
  include("./db.php");
  $pfno=$_SESSION['jssateadmin'];
 
-  //if(isset($_POST['submitpubdetails'])){
+  //if(isset($_POST['delete[]'])){
 
  
 
@@ -16,9 +16,6 @@ include_once('asession.php');
 
 if(count($_POST))
 {  
-    // $clearoldpublications ="DELETE from `publications` where `pfno`='$pfno'";
-   
-    // $exec=mysqli_query($conn,$clearoldpublications);
   
 
 
@@ -74,5 +71,4 @@ if(count($_POST))
 }
 
   
-// header("Location:http://localhost/jssate/college/faculty/"); 
 ?>

@@ -1,6 +1,6 @@
 <?php
 include_once('session.php');
- $conn = mysqli_connect('localhost','root','');
+ $conn = mysqli_connect('localhost','root1','goodroot');
  if(!$conn)
  {
      echo 'Not Connected to Server';

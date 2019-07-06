@@ -1,6 +1,6 @@
 <?php
 // Establishing Connection with Server by passing server_name, user_id and password as a parameter
-$conn = mysqli_connect("localhost", "root", "");
+$conn = mysqli_connect("localhost", "root1", "goodroot");
 // Selecting Database
 $db = mysqli_select_db( $conn,"faculty");
 session_start();// Starting Session

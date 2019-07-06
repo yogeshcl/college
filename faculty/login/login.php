@@ -5,8 +5,8 @@ $pfno=$_SESSION['pfno'];
  include("./uploadimage.php");
  $result = mysqli_query($conn, "SELECT * FROM profile WHERE pfno='$pfno'");  
  $result1 = mysqli_query($conn, "SELECT profilepic FROM profile WHERE pfno='$pfno'");    
-
-
+ $consultancy=mysqli_query($conn, "SELECT * FROM consultancy WHERE pfno='$pfno'");
+ $fundedresearch=mysqli_query($conn, "SELECT * FROM fundedresearch WHERE pfno='$pfno'");
 ?>
 
 <html lang="en">
@@ -377,7 +377,7 @@ if ($row1 = $result1->fetch_assoc()) {
 
             <div class="tab__content">
                 <h3>Research</h3>
-                <script type="text/javascript">
+                    <script type="text/javascript">
                     function validateresearch(frm)
                     {
                         var ele = frm.elements['research[]'];
@@ -441,6 +441,143 @@ if ($row1 = $result1->fetch_assoc()) {
                           
                          </div>
                      </div>
+
+                     <!-----------fundedresearch---------------->
+                     <script type="text/javascript">
+                    function validatefundedresearch(frm)
+                    {
+                        var ele = frm.elements['fundedresearch[]'];
+                        if (! ele.length)
+                        {
+                            alert(ele.value);
+                        }
+                        return true;
+                    }
+                    function add_feedfundedresearch()
+                    {
+                        var div1 = document.createElement('div');
+                        div1.innerHTML = document.getElementById('newlinktp6').innerHTML;
+                    
+                        document.getElementById('newlink6').appendChild(div1);
+                    }
+                    </script>
+               
+               
+                     <form method="post" action="./fundedresearch.php" onsubmit="return validatefundedresearch(this)">
+                     <table>
+                     <tr>
+                         <td valign=top style="width:150px;"> Funded Research :</td>
+                         <td valign=top>
+                         <?php 
+                         while($rows=mysqli_fetch_assoc($fundedresearch))
+                         {
+                            
+                        ?>
+                        <div id="newlink6">
+                                 <div class="feed" style="display:inline-block; padding-bottom: 10px;">
+                                 <textarea name="fundedresearch[]"  cols="100" rows="3" maxlength="995"><?php echo "{$rows['Fundedresearch']}"; ?></textarea>
+                                  
+                                 </div>
+                             </div>
+            
+                        <?php 
+                         }
+                        
+                                         
+                         ?>
+                             
+                             <p id="addnew">
+                                    <a href="javascript:add_feedfundedresearch()">Add New </a>
+                                </p>
+                         </td>
+                     </tr>
+                     </table>
+                         <p>
+                             <br>
+                             <input type="submit" name="submitfundedresearch">
+                             <input type="reset" name="reset1">
+                         </p>
+                  
+                     </form>
+                     <!-- Template. This whole data will be added directly to working form above -->
+                     <div id="newlinktp6" style="display:none">
+                         <div class="feed" style="display:inline-block; padding-bottom: 10px;">
+                         <textarea name="fundedresearch[]"  cols="100" rows="3" maxlength="995"></textarea>
+                         </div>
+                     </div>
+                    
+                
+                     <!-------------fundedresearch end------------->
+
+                     <!-----------------consultancy--------------->
+                     
+                <script type="text/javascript">
+                    function validateconsultancy(frm)
+                    {
+                        var ele = frm.elements['consultancy[]'];
+                        if (! ele.length)
+                        {
+                            alert(ele.value);
+                        }
+                        return true;
+                    }
+                    function add_feedconsultancy()
+                    {
+                        var div1 = document.createElement('div');
+                        div1.innerHTML = document.getElementById('newlinktp5').innerHTML;
+                    
+                        document.getElementById('newlink5').appendChild(div1);
+                    }
+                    </script>
+               
+               
+                     <form method="post" action="./consultancy.php" onsubmit="return validateconsultancy(this)">
+                     <table>
+                     <tr>
+                         <td valign=top style="width:150px;"> consultancy  :</td>
+                         <td valign=top>
+                         <?php 
+                         while($rows=mysqli_fetch_assoc($consultancy))
+                         {
+                            
+                        ?>
+                        <div id="newlink5">
+                                 <div class="feed" style="display:inline-block; padding-bottom: 10px;">
+                                 <textarea name="consultancy[]"  cols="100" rows="3" maxlength="995"><?php echo "{$rows['consultancy']}"; ?></textarea>
+                                      
+                                 </div>
+                             </div>
+            
+                        <?php 
+                         }
+                        
+                                         
+                         ?>
+                             
+                             <p id="addnew">
+                                    <a href="javascript:add_feedconsultancy()">Add New </a>
+                                </p>
+                         </td>
+                     </tr>
+                     </table>
+                         <p>
+                             <br>
+                             <input type="submit" name="submitconsultancy">
+                             <input type="reset" name="reset1">
+                         </p>
+                  
+                     </form>
+                     <!-- Template. This whole data will be added directly to working form above -->
+                     <div id="newlinktp5" style="display:none">
+                         <div class="feed" style="display:inline-block; padding-bottom: 10px;">
+                         <textarea name="consultancy[]"  cols="100" rows="3" maxlength="995"></textarea>
+                         </div>
+                     </div>
+                     <!--------------end  consultancy----------------->
+
+
+
+
 
             </div>
 
