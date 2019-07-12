@@ -25,9 +25,9 @@ include_once('session.php');
     $dob = date('Y-m-d', strtotime($rawdate1));
 
     
-  $sql= " UPDATE `profile` SET `name`='".$_POST["name"]."',`designation`='".$_POST["designation"]."',`department`='".$_POST["department"]."',
+  $sql= " UPDATE `profile` SET `name`='".$_POST["name"]."',`prefix`='".$_POST["prefix"]."',`designation`='".$_POST["designation"]."',`department`='".$_POST["department"]."',
   `doj`='$doj',`dob`='$dob',`fathername`='".$_POST["fathername"]."',`sex`='".$_POST["sex"]."',`nationality`='".$_POST["nationality"]."',`contactno`='".$_POST["contactno"]."',`emailid`='".$_POST["emailid"]."',
-  `caddress`='".$_POST["caddress"]."',`paddress`='".$_POST["paddress"]."',`eduquali`='".$_POST["eduquali"]."',`experience`='".$_POST["experience"]."',`achievements`='".$_POST["achievements"]."',`hobbies`='".$_POST["hobbies"]."'  WHERE pfno='$pfno'";
+  `caddress`='".$_POST["caddress"]."',`paddress`='".$_POST["paddress"]."',`eduquali`='".$_POST["eduquali"]."',`experience`='".$_POST["experience"]."',`professionalbodies`='".$_POST["professionalbodies"]."',`hobbies`='".$_POST["hobbies"]."'  WHERE pfno='$pfno'";
 
   $qry=mysqli_query($conn, $sql);
 

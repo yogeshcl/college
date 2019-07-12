@@ -7,6 +7,10 @@ $pfno=$_SESSION['pfno'];
  $result1 = mysqli_query($conn, "SELECT profilepic FROM profile WHERE pfno='$pfno'");    
  $consultancy=mysqli_query($conn, "SELECT * FROM consultancy WHERE pfno='$pfno'");
  $fundedresearch=mysqli_query($conn, "SELECT * FROM fundedresearch WHERE pfno='$pfno'");
+ $publications=mysqli_query($conn, "SELECT * FROM publications WHERE pfno='$pfno'");
+ $achievements=mysqli_query($conn, "SELECT * FROM achievements WHERE pfno='$pfno'");
+ $guidance=mysqli_query($conn, "SELECT * FROM guidance WHERE pfno='$pfno'");
+ $flag=0;
 ?>
 
 <html lang="en">
@@ -97,12 +101,15 @@ $pfno=$_SESSION['pfno'];
             <input type="radio" id="tab7" name="tabGroup2" class="tab">
             <label for="tab7">Publications</label>
 
+            <input type="radio" id="tab8" name="tabGroup2" class="tab">
+            <label for="tab8">Achievements</label>
+
             <div class="tab__content">
                 <h3>Profile</h3>
-
+            
                 <?php 
-if ($row = $result->fetch_assoc()) {
-?>
+                if ($row = $result->fetch_assoc()) {
+                  ?>
 
                 <div id="profiledata" style="float:left">
                     <form name="profile" action="" method="post">
@@ -116,6 +123,18 @@ if ($row = $result->fetch_assoc()) {
                             <tr>
                                 <td>Name</td>
                                 <td> <input type="text" name="name" id="name" value="<?php echo $row['name'];?>">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Prefix</td>
+                                <td> <input list="pref" type="text" name="prefix" id="prefix" value="<?php echo $row['prefix'];if($row['prefix']=='Dr.'){$flag=1;}else{$flag=0;}?>">
+                                <datalist id="pref">
+                                        <option value="Mr.">
+                                        <option value="Ms.">
+                                        <option value="Mrs">
+                                        <option value="Miss">
+                                        <option value="Dr.">
+                                    </datalist>
                                 </td>
                             </tr>
                             <tr>
@@ -226,12 +245,14 @@ if ($row = $result->fetch_assoc()) {
                                     <input type="text" name="paddress" id="paddress" value="<?php echo $row['paddress'];?>">
                                 </td>
                             </tr>
+                                 
                             <tr>
-                                <td>Achievements
+                                <td>Professional Bodies
                                 <td>
-                                    <input type="text" name="achievements" id="achievements" value="<?php echo $row['achievements'];?>">
+                                    <input type="text" name="professionalbodies" id="professionalbodies" value="<?php echo $row['professionalbodies'];?>">
                                 </td>
                             </tr>
+                            
                             <tr>
                                 <td>Hobbies
                                 <td>
@@ -249,10 +270,10 @@ if ($row = $result->fetch_assoc()) {
                     </form>
                 </div>
                 <?php
-}
-else
-  echo "<h3>Faculty Not Found";
-?>
+              }
+             else
+                 echo "<h3>Faculty Not Found";
+                  ?>
 
 
 
@@ -305,6 +326,7 @@ if ($row1 = $result1->fetch_assoc()) {
                     });
                 </script>
             </div>
+     <!--------------------research-------------->
 
             <div class="tab__content">
                 <h3>Responsibilites</h3>
@@ -441,8 +463,8 @@ if ($row1 = $result1->fetch_assoc()) {
                           
                          </div>
                      </div>
-
-                     <!-----------fundedresearch---------------->
+                     
+<!-----------fundedresearch---------------->
                      <script type="text/javascript">
                     function validatefundedresearch(frm)
                     {
@@ -466,7 +488,7 @@ if ($row1 = $result1->fetch_assoc()) {
                      <form method="post" action="./fundedresearch.php" onsubmit="return validatefundedresearch(this)">
                      <table>
                      <tr>
-                         <td valign=top style="width:150px;"> Funded Research :</td>
+                         <td valign=top style="width:150px;"> Funded Project :</td>
                          <td valign=top>
                          <?php 
                          while($rows=mysqli_fetch_assoc($fundedresearch))
@@ -507,9 +529,8 @@ if ($row1 = $result1->fetch_assoc()) {
                      </div>
                     
                 
-                     <!-------------fundedresearch end------------->
-
-                     <!-----------------consultancy--------------->
+ <!-------------fundedresearch end------------->
+  <!-----------------consultancy--------------->
                      
                 <script type="text/javascript">
                     function validateconsultancy(frm)
@@ -534,7 +555,7 @@ if ($row1 = $result1->fetch_assoc()) {
                      <form method="post" action="./consultancy.php" onsubmit="return validateconsultancy(this)">
                      <table>
                      <tr>
-                         <td valign=top style="width:150px;"> consultancy  :</td>
+                         <td valign=top style="width:150px;"> Consultancy  :</td>
                          <td valign=top>
                          <?php 
                          while($rows=mysqli_fetch_assoc($consultancy))
@@ -573,7 +594,141 @@ if ($row1 = $result1->fetch_assoc()) {
                          <textarea name="consultancy[]"  cols="100" rows="3" maxlength="995"></textarea>
                          </div>
                      </div>
-                     <!--------------end  consultancy----------------->
+ <!--------------end  consultancy----------------->
+   <!------------guiding ---------------->   
+                <?php 
+                if ($flag)
+                 {
+                  ?> 
+                 <script type="text/javascript">
+                    function validateguidance(frm)
+                    {
+                        var ele = frm.elements['guidance[]'];
+                        if (! ele.length)
+                        {
+                            alert(ele.value);
+                        }
+                        return true;
+                    }
+                    function add_feedguidance()
+                    {
+                        var div1 = document.createElement('div');
+                        div1.innerHTML = document.getElementById('newlinktp50').innerHTML;
+                    
+                        document.getElementById('newlink50').appendChild(div1);
+                    }
+                    </script>
+               
+               
+                     <form method="post" action="./guidance.php" onsubmit="return validateguidance(this)">
+                     <table>
+                     <tr>
+                         <td valign=top style="width:150px;"> Guidance Research  :</td>
+                         <td valign=top>
+                          <ol>   
+                         <?php 
+                         while($gud=mysqli_fetch_assoc($guidance))
+                         {
+                            
+                        ?>
+                        <li>
+                        <div id="newlink50">
+                            <table>
+                             <tr>
+                                <td>Name         :</td>
+                                <td>
+                                    <input type="text" name="nameofresearchscholar[]" id="nameofresearchscholar" maxlength="500" size="35" value="<?php echo $gud['name'];?>">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Tittle       :</td>
+                                <td>
+                                    <input type="text" name="tittle[]" id="tittle" maxlength="500" size="35" value="<?php echo $gud['tittle'];?>">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>University   :</td>
+                                <td>
+                                    <input type="text" name="university[]" id="university" maxlength="500" size="35" value="<?php echo $gud['university'];?>">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Guidance Type:</td>
+                                <td>
+                                    <input list="typ" type="text" name="types[]" id="types" maxlength="7" size="10" value="<?php echo $gud['type'];?>">
+                                    <datalist id="typ">
+                                        <option value="guided">
+                                        <option value="guiding">
+                                    </datalist>
+                                </td>
+                            </tr>
+                        </table>
+                             </div>
+                         </li>  
+                         
+            
+                        <?php 
+                         }                 
+                         ?>
+                        </ol> 
+                             
+                             <p id="addnew">
+                                    <a href="javascript:add_feedguidance()">Add New </a>
+                                </p>
+                         </td>
+                     </tr>
+                     </table>
+                         <p>
+                             <br>
+                             <input type="submit" name="submitguidance">
+                             <input type="reset" name="reset1">
+                         </p>
+                  
+                     </form>
+                     <!-- Template. This whole data will be added directly to working form above -->
+                     <div id="newlinktp50" style="display:none">
+                         <div class="feed" style="display:inline-block; padding-bottom: 10px;">
+                        
+                         </div>
+                       
+                            <table>
+                             <tr>
+                                <td>Name          :</td>
+                                <td>
+                                    <input type="text" name="nameofresearchscholar[]" id="nameofresearchscholar" maxlength="500" size="35" value="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Tittle        :</td>
+                                <td>
+                                    <input type="text" name="tittle[]" id="tittle" maxlength="500" size="35" value="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>University    :</td>
+                                <td>
+                                    <input type="text" name="university[]" id="university" maxlength="500" size="35" value="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Guidance Type :</td>
+                                <td>
+                                    <input list="typ" type="text" name="types[]" id="types" maxlength="7" size="10" value="">
+                                    <datalist id="typ">
+                                        <option value="guided">
+                                        <option value="guiding">
+                                    </datalist>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                         
+                     </div>
+
+                     <?php
+                     }
+                    
+                     ?>
 
 
 
@@ -583,6 +738,7 @@ if ($row1 = $result1->fetch_assoc()) {
 
             <div class="tab__content">
               
+               
                 <!-- books -->
                 <script type="text/javascript">
                     function validatebooks(frm)
@@ -648,6 +804,7 @@ if ($row1 = $result1->fetch_assoc()) {
                      </div>
 
 
+
                      <!-- publications -->
                      <script type="text/javascript">
                     function validatepublications(frm)
@@ -666,9 +823,9 @@ if ($row1 = $result1->fetch_assoc()) {
                     function add_feedpublications()
                     {
                         var div1 = document.createElement('div');
-                        div1.innerHTML = document.getElementById('newlinktp4').innerHTML;
+                        div1.innerHTML = document.getElementById('newlinktp91').innerHTML;
                     
-                        document.getElementById('newlink4').appendChild(div1);
+                        document.getElementById('newlink91').appendChild(div1);
                     }
                     </script>
                
@@ -683,7 +840,7 @@ if ($row1 = $result1->fetch_assoc()) {
                          {
                             
                         ?>
-                        <div id="newlink4" style="width:10vw">
+                        <div id="newlink91" >
                                  <div class="feed" style="display:inline-block; padding-bottom: 10px;" >
                                  <textarea name="publications[]"  cols="100" rows="3" maxlength="995"><?php echo "{$rows['pubdetails']}"; ?></textarea>
                                        
@@ -710,7 +867,7 @@ if ($row1 = $result1->fetch_assoc()) {
                   
                      </form>
                      <!-- Template. This whole data will be added directly to working form above -->
-                     <div id="newlinktp4" style="display:none">
+                     <div id="newlinktp91" style="display:none">
                          <div class="feed" style="display:inline-block; padding-bottom: 10px;">
                          <textarea name="publications[]"  cols="100" rows="3" maxlength="995"></textarea>
                           
@@ -735,9 +892,9 @@ if ($row1 = $result1->fetch_assoc()) {
                     function add_feedjournals()
                     {
                         var div1 = document.createElement('div');
-                        div1.innerHTML = document.getElementById('newlinktp5').innerHTML;
+                        div1.innerHTML = document.getElementById('newlinktp51').innerHTML;
                     
-                        document.getElementById('newlink5').appendChild(div1);
+                        document.getElementById('newlink51').appendChild(div1);
                     }
                     </script>
                
@@ -752,7 +909,7 @@ if ($row1 = $result1->fetch_assoc()) {
                          {
                             
                         ?>
-                        <div id="newlink5">
+                        <div id="newlink51">
                                  <div class="feed" style="display:inline-block; padding-bottom: 10px;">
                                  <textarea name="journals[]"  cols="100" rows="3" maxlength="995"><?php echo "{$rows['journaldetails']}"; ?></textarea>
                                   
@@ -779,12 +936,83 @@ if ($row1 = $result1->fetch_assoc()) {
                   
                      </form>
                      <!-- Template. This whole data will be added directly to working form above -->
-                     <div id="newlinktp5" style="display:none">
+                     <div id="newlinktp51" style="display:none">
                          <div class="feed" style="display:inline-block; padding-bottom: 10px;">
                          <textarea name="journals[]"  cols="100" rows="3" maxlength="995"></textarea>
 
                                            </div>
                      </div>
+                     
+                    
+            </div>
+            <div class="tab__content">
+                <h3>Achievements</h3>
+                <script type="text/javascript">
+                    function validate(frm)
+                    {
+                        var ele = frm.elements['achievements[]'];
+                        if (! ele.length)
+                        {
+                            alert(ele.value);
+                        }
+                        // for(var i=0; i<ele.length; i++)
+                        // {
+                        //     alert(ele[i].value);
+                        // }
+                        return true;
+                    }
+                    function add_feed()
+                    {
+                        var div1 = document.createElement('div');
+                        div1.innerHTML = document.getElementById('newlinktpl0').innerHTML;
+                    
+                        document.getElementById('newlink0').appendChild(div1);
+                    }
+                    </script>
+               
+               
+                     <form method="post" action="./achievements.php" onsubmit="return validate(this)">
+                     <table>
+                     <tr>
+                         <td valign=top> Enter Achievements :</td>
+                         <td valign=top>
+                         <?php 
+                         while($rows=mysqli_fetch_assoc($achievements))
+                         {
+                            
+                        ?>
+                        <div id="newlink0">
+                                 <div class="feed" style="display:inline-block; padding-bottom: 10px;">
+                                    <input type="text" name="achievements[]" value="<?php echo "{$rows['achievements']}"; ?>" size="30">   
+                                 </div>
+                             </div>
+            
+                        <?php 
+                         }
+                        
+                                         
+                         ?>
+                             
+                             <p id="addnew">
+                                    <a href="javascript:add_feed()">Add New </a>
+                                </p>
+                         </td>
+                     </tr>
+                     </table>
+                         <p>
+                             <br>
+                             <input type="submit" name="submitachievements">
+                             <input type="reset" name="reset1">
+                         </p>
+                  
+                     </form>
+                     <!-- Template. This whole data will be added directly to working form above -->
+                     <div id="newlinktpl0" style="display:none">
+                         <div class="feed" style="display:inline-block; padding-bottom: 10px;">
+                          <input type="text" name="achievements[]" value=""  size="30">
+                         </div>
+                     </div>
+                 
 
             </div>
 

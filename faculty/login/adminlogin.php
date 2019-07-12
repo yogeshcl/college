@@ -149,7 +149,7 @@ $result1=mysqli_query($conn,$update);
                         document.getElementById('newlink').appendChild(div1);
                     }
                     </script>
-               
+               <a href="./download.php"><button>Download All Faculty Details</button> </a>
                
                     
                      <table id="facultylist">

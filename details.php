@@ -87,10 +87,13 @@
  $respo=mysqli_query($conn, "SELECT * FROM responsibilites WHERE pfno='$id'");
  $reserach=mysqli_query($conn, "SELECT * FROM research WHERE pfno='$id'");
  $books=mysqli_query($conn, "SELECT * FROM books WHERE pfno='$id'");
- $publications=mysqli_query($conn, "SELECT * FROM pubLications WHERE pfno='$id'");
+ $publications=mysqli_query($conn, "SELECT * FROM publications WHERE pfno='$id'");
  $journals=mysqli_query($conn, "SELECT * FROM journals WHERE pfno='$id'");
  $fundedresearch=mysqli_query($conn, "SELECT * FROM fundedresearch WHERE pfno='$id'");
  $consultancy=mysqli_query($conn, "SELECT * FROM consultancy WHERE pfno='$id'");
+ $guided=mysqli_query($conn, "SELECT * FROM guidance WHERE pfno='$id' AND `type`='guided'");
+ $guiding=mysqli_query($conn, "SELECT * FROM guidance WHERE pfno='$id' AND `type`='guiding'");
+ $flag=0;
 
 ?>
 
@@ -117,6 +120,10 @@
             <input type="radio" id="tab7" name="tabGroup2" class="tab">
             <label for="tab7">
                 <h5>Publications</h5>
+            </label>
+            <input type="radio" id="tab8" name="tabGroup2" class="tab">
+            <label for="tab8">
+                <h5>Achievements</h5>
             </label>
 
             
@@ -145,6 +152,7 @@ if ($row = $result->fetch_assoc()) {
 ?>
 
                 <p class="profile">Name </p>: <p class="values"><?php echo $row['name'] ;?> </p><br>
+                <p class="profile">Prefix </p>: <p class="values"><?php echo $row['prefix']; if($row['prefix']=='Dr.'){$flag=1;}else{$flag=0;};?> </p><br>
                 <p class="profile">designation </p>: <p class="values"><?php echo $row['designation'];?> </p><br>
                 <p class="profile">department </p>: <p class="values"><?php echo $row['department'];?> </p><br>
                 <p class="profile">Education Qualification </p>: <p class="values"><?php echo $row['eduquali'];?> </p>
@@ -164,7 +172,7 @@ if ($row = $result->fetch_assoc()) {
                 <br>
                 <p class="profile">Permanenent address </p>: <p class="values"><?php echo $row['paddress'];?> </p><br>
 
-                <p class="profile">Achievements </p>: <p class="values"><?php echo $row['achievements'];?> </p><br>
+                <p class="profile">Professional Bodies </p>: <p class="values"><?php echo $row['professionalbodies'];?> </p><br>
                 <p class="profile">Hobbies </p>: <p class="values"><?php echo $row['hobbies'];?> </p><br>
 
       
@@ -212,6 +220,7 @@ else
 
             <div class="tab__content" >
               <div class="contents" >
+              <h5 id="areaofresearch">Area of Research</h5>
 
                 <ul >
                     <?php 
@@ -238,7 +247,7 @@ else
                 </ul>
 
                 <!---fundeResearch---->
-                <h5 id="fundedresearch">fundedresearch</h5>
+                <h5 id="fundedresearch">Funded Project</h5>
                 <ul>
                     <?php 
              while($rows=mysqli_fetch_assoc($fundedresearch))
@@ -266,7 +275,7 @@ else
 
 
 <!-----consultancy------------>
-                <h5 id="consultancy">consultancy</h5>
+                <h5 id="consultancy">Consultancy</h5>
                 <ul>
                     <?php 
              while($rows=mysqli_fetch_assoc($consultancy))
@@ -291,8 +300,71 @@ else
            
              ?>
                 </ul>
-</div>
-            </div>
+                <?php 
+                if ($flag)
+                 {
+                  ?> 
+<!-----------guided------->
+           <h5 id="guided">Guided</h5>
+                <ol>
+                    <?php 
+             while($rows=mysqli_fetch_assoc($guided))
+             {
+               if(strlen($rows['name'])>1)
+               {
+               
+            ?>
+                   <li> Name :<?php echo "{$rows['name']}"; ?> <br>
+                    Tittle :<?php echo "{$rows['tittle']}"; ?> <br>
+                    University :<?php echo "{$rows['university']}"; ?></li>
+
+                    <?php 
+               }
+               else
+               { ?>
+
+                    <script>
+                    $("#guided").css("display", "none");
+                    </script>
+                    <?php
+               }
+            }
+           
+             ?>
+                </ol>
+ <!-----------guiding------->
+       <h5 id="guiding">Guiding</h5>
+                <ol>
+                    <?php 
+             while($rows=mysqli_fetch_assoc($guiding))
+             {
+               if(strlen($rows['name'])>1)
+               {
+               
+            ?>
+                   <li> Name :<?php echo "{$rows['name']}"; ?> <br>
+                    Tittle :<?php echo "{$rows['tittle']}"; ?> <br>
+                    University :<?php echo "{$rows['university']}"; ?></li>
+
+                    <?php 
+               }
+               else
+               { ?>
+
+                    <script>
+                    $("#guiding").css("display", "none");
+                    </script>
+                    <?php
+               }
+            }
+           
+             ?>
+                </ol>
+
+          <?php }?>
+
+               </div>
+           </div>
 
 
 

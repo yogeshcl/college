@@ -77,7 +77,7 @@
    <div class="main">
      <div class="second_main">
 
-     	<a class="thermal" href="https://www.google.co.in/">
+     	<a class="thermal" href="./departments/computerscience/main.php">
    		<div>
    			<img src="https://jssateb.ac.in/wp-content/uploads/2016/10/JSSATEB-Computer-Science-and-Engineering-1024x604.jpg" width="300px" height="150px">
    		</div>

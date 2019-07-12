@@ -6,15 +6,18 @@
 <meta http-equiv="description" content="page description" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <style type="text/css">@import "styles.css";</style>
+<base href="http://localhost/college/" />
+
+
 </head>
 
 <body>
 
-<?php include("dheader.html");?>
-<?php include("csecontent.html");?>
+<?php include("./dheader.html");?>
+<?php include("./content.php");?>
 
 
-<?php include("../footer.html");?>
+<?php include("../../mainpage/footer.html");?>
 
 </body>
 </html>
